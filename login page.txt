@@ -1,0 +1,263 @@
+<html>
+    <head>
+        <style>
+            span
+            {
+                color:red;
+            }
+            
+        </style> 
+      <script>
+         function f1()
+         {
+             flag = true;
+             nm=document.getElementById("nm").value;
+             pwd=document.getElementById("pwd").value;
+             cpwd=document.getElementById("cpwd").value;
+             address=document.getElementById("address").value;
+             male=document.getElementById("male").checked;
+             female=document.getElementById("female").checked;
+             chk1=document.getElementById("chk1").checked;
+             chk2=document.getElementById("chk2").checked;
+             chk3=document.getElementById("chk3").checked;
+             city=document.getElementById("city");
+             mob=document.getElementById("mobile");
+             email=document.getElementById("email");
+            
+             s1=document.getElementById("s1");
+             s2=document.getElementById("s2");
+             s3=document.getElementById("s3");
+             s4=document.getElementById("s4");
+             s5=document.getElementById("s5");
+             s6=document.getElementById("s6");
+             s7=document.getElementById("s7");
+             s8=document.getElementById("s8");
+             s9=document.getElementById("s9");
+             
+             reg=/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+             b=reg.test(email);
+            
+            if(nm.length==0)
+             {
+                 s1.innerHTML="pls Enter name";
+                 flag=false;
+             }
+             if(pwd.length==0)
+             {
+                 s2.innerHTML="pls Password";
+                 flag=false;
+             }
+             if(cpwd.length==0)
+             {
+                 s3.innerHTML="pls Enter password again";
+                 flag=false;
+             }
+             else if(pwd!=cpwd)
+             {
+                 s3.innerHTML="password not match";
+                 flag=false;
+             }
+             else
+             {
+                s3.innerHTML="";
+             }
+             if(address.length==0)
+             {
+                 s4.innerHTML="pls Enter address";
+                 flag=false;
+             }
+             if(male==false && female==false)
+             {
+                 s5.innerHTML="pls select any gender";
+             }
+             if(chk1==false && chk2==false && chk3==false)
+             {
+                 s6.innerHTML="pls select any hobby";
+             }
+             if(city.selectedIndex==0)
+             {
+                 s7.innerHTML="pls select city";
+                 flag=false;
+             }
+             if(mob.length==0)
+             {
+                 s8.innerHTML="pls enter moblie number";
+                 flag=false;
+             }
+             if(email.length==0)
+             {
+                 s9.innerHTML="pls enter email";
+                 flag=false;
+             }
+              if(!b)
+             {
+                 s9.innerHTTP="invalid value";
+                 flag=false;
+             }
+             return flag;
+                     
+             
+         }
+         function clearfields(x)
+         {
+             x.innerHTML="";
+         }
+         function chkpwd()
+         {
+             pwd=document.getElementById("pwd").value;
+             s2=document.getElementById("s2");
+             if(pwd.length<8)
+             {
+                 s2.innerHTML="week";
+             }
+             else
+             {
+                 s2.innerHTML="strong";
+                 s2.style.color="green";
+             }
+         }
+         function pwdchk()
+         {
+             pwd=document.getElementById("pwd").value;
+             cpwd=document.getElementById("cpwd").value;
+             s3=document.getElementById("s3");
+             if(pwd!=cpwd)
+             {
+                 s3.innerHTML="password not match";
+             }
+             else
+             {
+                 s3.innerHTML="pasword not match";
+             }
+         }
+         function showpwd()
+         {
+             pwd=document.getElementById("pwd");
+             if(pwd.type=="password")
+             {
+                 pwd.type="text";
+             }
+             else
+             {
+                 pwd.type="password";
+             }
+         }
+       
+         function chkmob()
+         {
+             mob=document.getElementById("mob").value;
+             s8=document.getElementById("s8");
+             if(isNaN(mob))
+             {
+                 s8.innerHTML="pls Enter only number";
+             }
+             else if(mob.length!=0)
+             {
+                 s8.innerHTML="pls Enter 10 digit mobile number";
+             }
+             else
+             {
+                 s8.innerHTML="";
+             }
+         }
+      
+     
+
+
+     </script>
+    </head>
+    <body>
+        <form action="newhtml.html"></form>
+            <table>
+                <tr>
+                    <td> Enter Name</td>
+                    <td>
+                        <input type="text" id="nm" onblur="clearfiels(s1)">
+                        <span id="s1"></span>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td> Enter Password</td>
+                    <td>
+                        <input type="password" id="pwd" onblur="clearfields(s2)" onkeyUp="chkpwd()" >
+                        <span id="s2"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox"onclick="showpwd()">
+                    </td>
+                </tr>
+                <tr>
+                    <td> confirm password</td>
+                    <td>
+                        <input type="password" id="cpwd"  onblur="clearfields(s2)" onkeyUp="chkpwd()" >
+                        <span id="s3"></span>
+                    </td>
+                </tr>
+                
+                
+                 <tr>
+                    <td> Address</td>
+                    <td>
+                        <textarea  id="address" onblur="clearfiels(s4)"></textarea>
+                        <span id="s4"></span>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td> Select gender</td>
+                    <td>
+                        <input type="radio" name="r1" id="male" onchange="clearfields(s5)">male
+                         <input type="radio" name="r1" id="female" onchange="clearfields(s5)">female
+                       
+                        <span id="s5"></span>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td> Select hobbies</td>
+                   
+                    <td>
+                        <input type="checkbox" id="chk1" onchange="clearfields(s6)">playing<br>
+                        <input type="checkbox" id="chk2" onchange="clearfields(s6)">singing<br>
+                        <input type="checkbox" id="chk3" onchange="clearfields(s6)">dancing<br>
+                       
+                        <span id="s6"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Select city</td>
+                    <td>
+                        <select id="city" onchange="clearfields(s7)">
+                            <option> select city</option>
+                            <option> select indore</option>
+                            <option> select bhopal</option>
+                            <option> select dewas</option>
+                        </select>
+                        <span id="s7"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter mobile number</td>
+                    <td>
+                        <input type="text" id="mob" onblur="clearfields(s8)" onkeyUp="chkmob()">
+                        <span id="s8"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Enter Email</td>
+                    <td>
+                        <input type="email" id="email" onblur="clearfields(s9)">
+                        <span id="s9"></span>
+                    </td>
+                </tr>
+                <td>
+                <input type="submit" value="save" onclick="return f1()" >
+                </td>
+            </table>
+    </body>
+</html>
